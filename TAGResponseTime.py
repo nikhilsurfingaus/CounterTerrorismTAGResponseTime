@@ -1,8 +1,18 @@
+from turtle import width
 from Resoruces.Vehicle import Vehicle
 from Resoruces.Location import Location
 import numpy as np
 import math
+from tkinter import*
+import time
 
+
+#Creat Tkinter UI Interface
+test = False
+root = Tk()
+state = StringVar(root)
+test2 = False
+var = IntVar()
 
 
 def selectVehicle(location):
@@ -583,6 +593,105 @@ def calcTime(arr):
     return str(math.ceil(time))
 
 
+def displayLocAc(location, access):
+    print("Area: " + location)
+    print("Access: " + access)
+    
+def inter2(location, access, root2):
+    time.sleep(1)
+    root2.destroy()
+    displayLocAc(location, access)
+
+def createLocation():
+    print("State Selected is: " + state.get())
+    specificState = state.get()
+    locList = []
+    NSW = ["Sydney-North", "Sydney-East", "Sydney-South", "Sydney-West", "Newcastle", "Mid North Coast", "Central Coast Coast", "Hunter Valley", "Illawarra", "Canberra", "Wagga Wagga", "Northern Rivers", "North West Region NSW", "Central Region NSW", "Outback Region NSW"]
+    QLD = ["Brisbane-North", "Brisbane-East", "Brisbane-South", "Brisbane-West", "Gold Coast", "Sunshine Coast", "Cairns", "Townsville",  "Toowoomba", "Hervey Bay", "Mackay", "Rockhampton", "Bundaberg", "South West Region QLD", "Central West Region QLD", "North West Region QLD", "Far North Region QLD"]
+    VIC = ["Melbourne-North", "Melbourne-East", "Melbourne-South", "Melbourne-West", "Geelong", "Ballarat", "Bendigo", "Mildura", "Shepparton", "Wondonga", "Warrnambool", "Lakes Region VIC", "North West Region VIC", "Great Ocean Region VIC", "Gippsland Region VIC", "High Country Region VIC" ]
+    TAS = ["Hobart", "Launceston", "North West Region TAS", "North Region TAS", "East Region TAS", "South Region TAS", "West Region TAS" ]
+    SA = ["Adelaide-North", "Adelaide-East", "Adelaide-South", "Adelaide-West", "Mount Gambier", "Whyalla", "Coober Pedy", "North East Region SA", "South East Region SA", "South West Region SA", "North West Region SA" ]
+    NT = ["Darwin-North", "Darwin-East", "Darwin-South", "Darwin-West", "Katherine", "Alice Springs" , "Yulara", "South East Region NT", "North East Region NT", "Central Region NT", "South West Region NT" ]
+    WA = ["Perth-North", "Perth-East", "Perth-South", "Perth-West", "Learmonth", "Broome", "Exmouth", "Karratha", "Albany", "Geraldton", "Port Hedland", "Kununurra", "Kimberley Region WA", "Pilbara Region WA", "Mid West Region WA", "Goldfields Esperance Region WA", "South West Region WA"  ]
+    accessList = ["Simple", "Standard", "Complex"]
+    
+    #Select State Region Specific Options
+    if (specificState == "NSW"):
+        locList = NSW
+    if (specificState == "QLD"):
+        locList = QLD
+    if (specificState == "VIC"):
+        locList = VIC
+    if (specificState == "TAS"):
+        locList = TAS
+    if (specificState == "SA"):
+        locList = SA
+    if (specificState == "NT"):
+        locList = NT
+    if (specificState == "WA"):
+        locList = WA
+    
+    
+    
+    
+    root2 = Tk()
+    root2.geometry('500x400')
+    root2.title("TAG Response Estimator")
+    
+
+
+    label_0 = Label(root2, text="Select Location",width=28,font=("bold", 20))
+    label_0.place(x=20,y=53)
+    
+    area = StringVar(root2)
+    access = StringVar(root2)
+    
+    area.set(locList[0]) # default value
+    access.set(accessList[0])
+    
+    selectedLocation = OptionMenu(root2, area, *locList)
+    selectedLocation.config(width=20)
+    selectedLocation.pack()
+    selectedLocation.place(x=160,y=123)
+    
+
+    label_1 = Label(root2, text="Select Accessibility",width=28,font=("bold", 20))
+    label_1.place(x=20,y=200)
+    
+    selectedAccess = OptionMenu(root2, access, *accessList)
+    selectedAccess.config(width=20)
+    selectedAccess.pack()
+    selectedAccess.place(x=160,y=270)
+    
+    Button(root2, text='Next',width=20,bg='brown',fg='white', command=lambda : inter2(area.get(), access.get(), root2)).place(x=160,y=320)
+
+    root2.mainloop()
+    
+def inter():
+    #Create UI delay for better UX
+    time.sleep(1)
+    root.destroy()
+    createLocation()
+    
+def mainScreen():
+    STATES = ["NSW", "QLD", "VIC", "TAS", "SA", "NT", "WA"]
+    root.geometry('500x400')
+    root.title("TAG Response Estimator")
+    label_0 = Label(root, text="Select State/Territory",width=28,font=("bold", 20))
+    label_0.place(x=20,y=53)
+
+    state.set(STATES[0]) # default value
+
+    w = OptionMenu(root, state, *STATES)
+    w.pack()
+    w.place(x=200,y=143)
+    
+    Button(root, text='Next',width=20,bg='brown',fg='white', command=inter).place(x=160,y=280)
+
+    
+
+    root.mainloop()    
+
 def main():
     location = Location("South West Region WA", 1860, "Medium", None)
     time1 = selectVehicle(location);
@@ -592,5 +701,7 @@ def main():
     time2 = selectVehicle(location2);
     print("TAG-East ETA: " + time2 + " minutes to location: " + location2.get_name())
 
+    mainScreen()
+    
 if __name__ == "__main__":
     main()
