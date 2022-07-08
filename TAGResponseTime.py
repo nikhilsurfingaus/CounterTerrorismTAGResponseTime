@@ -15,573 +15,761 @@ test2 = False
 var = IntVar()
 
 
-def selectVehicle(location):
-    
+def selectVehicle(location, access):
+    time = 0;
     #NSW Regions TAG E //////////////////////////////////////////////////////
-    if (location.get_name() == "Sydney-North"):
+    if (location == "Sydney-North"):
         Aircraft = Vehicle("RAAF Fixed Wing", 600, 20, 2180)
         Heli = Vehicle("Taipan", 200, 10, 20);
         arr = np.array([Aircraft, Heli])
-        return calcTime(arr)
+        locObject = Location("Sydney-North", 2200, access, "East")
+        time= calcTime(arr)
+        return [locObject, time]
     
-    if (location.get_name() == "Sydney-East"):
+    if (location == "Sydney-East"):
         Aircraft = Vehicle("RAAF Fixed Wing", 600, 20, 2180)
         Heli = Vehicle("Taipan", 200, 10, 16);
         arr = np.array([Aircraft, Heli])
-        return calcTime(arr)
+        locObject = Location("Sydney-East", 2196, access, "East")
+        time= calcTime(arr)
+        return [locObject, time]    
     
-    if (location.get_name() == "Sydney-South"):
+    if (location == "Sydney-South"):
         Aircraft = Vehicle("RAAF Fixed Wing", 600, 20, 2180)
         Heli = Vehicle("Taipan", 200, 10, 7);
         arr = np.array([Aircraft, Heli])
-        return calcTime(arr)
+        locObject = Location("Sydney-South", 2187, access, "East")
+        time= calcTime(arr)
+        return [locObject, time]
     
-    if (location.get_name() == "Sydney-West"):
+    if (location == "Sydney-West"):
         Aircraft = Vehicle("RAAF Fixed Wing", 600, 20, 2180)
         Heli = Vehicle("Taipan", 200, 10, 24);
         arr = np.array([Aircraft, Heli])
-        return calcTime(arr)
+        locObject = Location("Sydney-West", 2204, access, "East")
+        time= calcTime(arr)
+        return [locObject, time]
     
-    if (location.get_name() == "Newcastle"):
+    if (location == "Newcastle"):
         Aircraft = Vehicle("RAAF Fixed Wing", 600, 20, 1950)
         Heli = Vehicle("Taipan", 150, 10, 15);
         arr = np.array([Aircraft, Heli])
-        return calcTime(arr)
+        locObject = Location("Newcastle", 1965, access, "East")
+        time= calcTime(arr)
+        return [locObject, time]
 
-    if (location.get_name() == "Mid North Coast"):
+    if (location == "Mid North Coast"):
         Aircraft = Vehicle("RAAF Fixed Wing", 600, 20, 1720)
         FourxFour = Vehicle("4x4", 80, 10, 25);
         arr = np.array([Aircraft, FourxFour])
-        return calcTime(arr)
+        locObject = Location("Mid North Coast", 1745, access, "East")
+        time= calcTime(arr)
+        return [locObject, time]
 
-    if (location.get_name() == "Central Coast Coast"):
+    if (location == "Central Coast"):
         Aircraft = Vehicle("RAAF Fixed Wing", 600, 20, 2050)
         FourxFour = Vehicle("4x4", 80, 10, 20);
         arr = np.array([Aircraft, FourxFour])
-        return calcTime(arr)
+        locObject = Location("Central Coast", 2070, access, "East")
+        time= calcTime(arr)
+        return [locObject, time]
     
-    if (location.get_name() == "Hunter Valley"):
+    if (location == "Hunter Valley"):
         Aircraft = Vehicle("RAAF Fixed Wing", 600, 20, 1940)
         FourxFour = Vehicle("4x4", 80, 10, 15);
         arr = np.array([Aircraft, FourxFour])
-        return calcTime(arr)
+        locObject = Location("Hunter Valley", 1955, access, "East")
+        time= calcTime(arr)
+        return [locObject, time]
     
-    if (location.get_name() == "Illawarra"):
+    if (location == "Illawarra"):
         Aircraft = Vehicle("RAAF Fixed Wing", 600, 20, 2250)
         FourxFour = Vehicle("4x4", 80, 10, 25);
         arr = np.array([Aircraft, FourxFour])
-        return calcTime(arr)
+        locObject = Location("Illawarra", 2275, access, "East")
+        time= calcTime(arr)
+        return [locObject, time]
     
-    if (location.get_name() == "Canberra"):
+    if (location == "Canberra"):
         Aircraft = Vehicle("RAAF Fixed Wing", 600, 20, 2450)
         Heli = Vehicle("Taipan", 150, 10, 15);
         arr = np.array([Aircraft, Heli])
-        return calcTime(arr)
+        locObject = Location("Canberra", 2465, access, "East")
+        time= calcTime(arr)
+        return [locObject, time]
     
-    if (location.get_name() == "Wagga Wagga"):
+    if (location == "Wagga Wagga"):
         Aircraft = Vehicle("RAAF Fixed Wing", 600, 20, 2480)
         Heli = Vehicle("Taipan", 150, 10, 10);
         arr = np.array([Aircraft, Heli])
-        return calcTime(arr)
+        locObject = Location("Wagga Wagga", 2490, access, "East")
+        time= calcTime(arr)
+        return [locObject, time]
     
-    if (location.get_name() == "Northern Rivers"):
+    if (location == "Northern Rivers"):
         Aircraft = Vehicle("RAAF Fixed Wing", 600, 20, 1600)
         Heli = Vehicle("Taipan", 150, 10, 80);
         arr = np.array([Aircraft, Heli])
-        return calcTime(arr)
+        locObject = Location("Northern Rivers", 1680, access, "East")
+        time= calcTime(arr)
+        return [locObject, time]
     
-    if (location.get_name() == "North West Region NSW"):
+    if (location == "North West Region NSW"):
         Aircraft = Vehicle("RAAF Fixed Wing", 600, 20, 1600)
         FourxFour = Vehicle("4x4", 80, 10, 30);
         arr = np.array([Aircraft, FourxFour])
-        return calcTime(arr)
+        locObject = Location("North West Region NSW", 1630, access, "East")
+        time= calcTime(arr)
+        return [locObject, time]
     
-    if (location.get_name() == "Central Region NSW"):
+    if (location == "Central Region NSW"):
         Aircraft = Vehicle("RAAF Fixed Wing", 600, 20, 1640)
         FourxFour = Vehicle("4x4", 80, 10, 35);
         arr = np.array([Aircraft, FourxFour])
-        return calcTime(arr)
+        locObject = Location("Central Region NSW", 1675, access, "East")
+        time= calcTime(arr)
+        return [locObject, time]
     
-    if (location.get_name() == "Outback Region NSW"):
+    if (location == "Outback Region NSW"):
         Aircraft = Vehicle("RAAF Fixed Wing", 600, 20, 1900)
         FourxFour = Vehicle("4x4", 80, 10, 50);
         arr = np.array([Aircraft, FourxFour])
-        return calcTime(arr)
+        locObject = Location("Outback Region NSW", 1950, access, "East")
+        time= calcTime(arr)
+        return [locObject, time]
     
     #QLD TAG E ////////////////////////////////////////////////////////////////
-    if (location.get_name() == "Brisbane-North"):
+    if (location == "Brisbane-North"):
         Aircraft = Vehicle("RAAF Fixed Wing", 600, 20, 1300)
         Heli = Vehicle("Taipan", 200, 10, 15);
         arr = np.array([Aircraft, Heli])
-        return calcTime(arr)
-    
-    if (location.get_name() == "Brisbane-East"):
+        locObject = Location("Brisbane-North", 1315, access, "East")
+        time= calcTime(arr)
+        return [locObject, time]
+        
+    if (location == "Brisbane-East"):
         Aircraft = Vehicle("RAAF Fixed Wing", 600, 10, 1300)
         Heli = Vehicle("Taipan", 200, 10, 10);
         arr = np.array([Aircraft, Heli])
-        return calcTime(arr)
-    
-    if (location.get_name() == "Brisbane-South"):
+        locObject = Location("Brisbane-East", 1310, access, "East")
+        time= calcTime(arr)
+        return [locObject, time]
+        
+    if (location == "Brisbane-South"):
         Aircraft = Vehicle("RAAF Fixed Wing", 600, 20, 1300)
         Heli = Vehicle("Taipan", 200, 10, 15);
         arr = np.array([Aircraft, Heli])
-        return calcTime(arr)
-    
-    if (location.get_name() == "Brisbane-West"):
+        locObject = Location("Brisbane-South", 1315, access, "East")
+        time= calcTime(arr)
+        return [locObject, time]
+        
+    if (location == "Brisbane-West"):
         Aircraft = Vehicle("RAAF Fixed Wing", 600, 20, 1300)
         Heli = Vehicle("Taipan", 200, 10, 20);
         arr = np.array([Aircraft, Heli])
-        return calcTime(arr)
-    
-    if (location.get_name() == "Gold Coast"):
+        locObject = Location("Brisbane-West", 1320, access, "East")
+        time= calcTime(arr)
+        return [locObject, time]
+        
+    if (location == "Gold Coast"):
         Aircraft = Vehicle("RAAF Fixed Wing", 600, 20, 1450)
         Heli = Vehicle("Taipan", 150, 10, 10);
         arr = np.array([Aircraft, Heli])
-        return calcTime(arr)
+        locObject = Location("Gold Coast", 1460, access, "East")
+        time= calcTime(arr)
+        return [locObject, time]
     
-    if (location.get_name() == "Sunshine Coast"):
+    if (location== "Sunshine Coast"):
         Aircraft = Vehicle("RAAF Fixed Wing", 600, 20, 1250)
         Heli = Vehicle("Taipan", 150, 10, 10);
         arr = np.array([Aircraft, Heli])
-        return calcTime(arr)
-    
-    if (location.get_name() == "Cairns"):
+        locObject = Location("Sunshine Coast", 1260, access, "East")
+        time= calcTime(arr)
+        return [locObject, time]
+        
+    if (location == "Cairns"):
         Aircraft = Vehicle("RAAF Fixed Wing", 600, 20, 350)
         FourxFour = Vehicle("4x4", 80, 10, 15);
         arr = np.array([Aircraft, FourxFour])
-        return calcTime(arr)
-    
-    if (location.get_name() == "Townsville"):
+        locObject = Location("Cairns", 365, access, "East")
+        time= calcTime(arr)
+        return [locObject, time]
+        
+    if (location == "Townsville"):
         Heli = Vehicle("Taipan", 150, 10, 10);
         arr = np.array([Heli])
-        return calcTime(arr)
-    
-    if (location.get_name() == "Toowoomba"):
+        locObject = Location("Townsville", 10, access, "East")
+        time= calcTime(arr)
+        return [locObject, time]
+        
+    if (location == "Toowoomba"):
         Aircraft = Vehicle("RAAF Fixed Wing", 600, 20, 1320)
         Heli = Vehicle("Taipan", 150, 10, 10);
         arr = np.array([Aircraft, Heli])
-        return calcTime(arr)
-    
-    if (location.get_name() == "Hervey Bay"):
+        locObject = Location("Toowoomba", 1330, access, "East")
+        time= calcTime(arr)
+        return [locObject, time]
+        
+    if (location == "Hervey Bay"):
         Aircraft = Vehicle("RAAF Fixed Wing", 600, 20, 1100)
         FourxFour = Vehicle("4x4", 80, 10, 10);
         arr = np.array([Aircraft, FourxFour])
-        return calcTime(arr)
-    
-    if (location.get_name() == "Mackay"):
+        locObject = Location("Hervey Bay", 1120, access, "East")
+        time= calcTime(arr)
+        return [locObject, time]
+        
+    if (location == "Mackay"):
         Aircraft = Vehicle("RAAF Fixed Wing", 600, 20, 390)
         FourxFour = Vehicle("4x4", 80, 10, 15);
         arr = np.array([Aircraft, FourxFour])
-        return calcTime(arr)
-    
-    if (location.get_name() == "Rockhampton"):
+        locObject = Location("Mackay", 405, access, "East")
+        time= calcTime(arr)
+        return [locObject, time]
+        
+    if (location == "Rockhampton"):
         Aircraft = Vehicle("RAAF Fixed Wing", 600, 20, 720)
         FourxFour = Vehicle("4x4", 80, 10, 25);
         arr = np.array([Aircraft, FourxFour])
-        return calcTime(arr)
-    
-    if (location.get_name() == "Bundaberg"):
+        locObject = Location("Rockhampton", 745, access, "East")
+        time= calcTime(arr)
+        return [locObject, time]
+        
+    if (location == "Bundaberg"):
         Aircraft = Vehicle("RAAF Fixed Wing", 600, 20, 1000)
         FourxFour = Vehicle("4x4", 80, 10, 10);
         arr = np.array([Aircraft, FourxFour])
-        return calcTime(arr)
-    
-    if (location.get_name() == "South West Region QLD"):
+        locObject = Location("Bundaberg", 1010, access, "East")
+        time= calcTime(arr)
+        return [locObject, time]
+        
+    if (location == "South West Region QLD"):
         Aircraft = Vehicle("RAAF Fixed Wing", 600, 20, 600)
         FourxFour = Vehicle("4x4", 80, 10, 25);
         arr = np.array([Aircraft, FourxFour])
-        return calcTime(arr)
-    
-    if (location.get_name() == "Central West Region QLD"):
+        locObject = Location("South West Region QLD", 625, access, "East")
+        time= calcTime(arr)
+        return [locObject, time]
+        
+    if (location == "Central West Region QLD"):
         Aircraft = Vehicle("RAAF Fixed Wing", 600, 20, 500)
         FourxFour = Vehicle("4x4", 80, 10, 25);
         arr = np.array([Aircraft, FourxFour])
-        return calcTime(arr)
-    
-    if (location.get_name() == "North West Region QLD"):
+        locObject = Location("Central West Region QLD", 525, access, "East")
+        time= calcTime(arr)
+        return [locObject, time]
+        
+    if (location == "North West Region QLD"):
         Aircraft = Vehicle("RAAF Fixed Wing", 600, 20, 450)
         FourxFour = Vehicle("4x4", 80, 10, 30);
         arr = np.array([Aircraft, FourxFour])
-        return calcTime(arr)
-    
-    if (location.get_name() == "Far North Region QLD"):
+        locObject = Location("North West Region QLD", 480, access, "East")
+        time= calcTime(arr)
+        return [locObject, time]
+        
+    if (location == "Far North Region QLD"):
         Aircraft = Vehicle("RAAF Fixed Wing", 600, 20, 350)
         Heli = Vehicle("Taipan", 150, 10, 10);
         arr = np.array([Aircraft, Heli])
-        return calcTime(arr)
-    
+        locObject = Location("Far North Region QLD", 360, access, "East")
+        time= calcTime(arr)
+        return [locObject, time]
+        
     #VIC TAG E /////////////////////////////////////////////////////
-    if (location.get_name() == "Melbourne-North"):
+    if (location == "Melbourne-North"):
         Aircraft = Vehicle("RAAF Fixed Wing", 600, 20, 2500)
         Heli = Vehicle("Taipan", 200, 10, 6);
         arr = np.array([Aircraft, Heli])
-        return calcTime(arr)
-    
-    if (location.get_name() == "Melbourne-East"):
+        locObject = Location("Melbourne-North", 2506, access, "East")
+        time= calcTime(arr)
+        return [locObject, time]
+        
+    if (location == "Melbourne-East"):
         Aircraft = Vehicle("RAAF Fixed Wing", 600, 20, 2500)
         Heli = Vehicle("Taipan", 200, 10, 10);
         arr = np.array([Aircraft, Heli])
-        return calcTime(arr)
-
-    if (location.get_name() == "Melbourne-South"):
+        locObject = Location("Melbourne-East", 2510, access, "East")
+        time= calcTime(arr)
+        return [locObject, time]
+    
+    if (location == "Melbourne-South"):
         Aircraft = Vehicle("RAAF Fixed Wing", 600, 20, 2500)
         Heli = Vehicle("Taipan", 200, 10, 13);
         arr = np.array([Aircraft, Heli])
-        return calcTime(arr)
-    
-    if (location.get_name() == "Melbourne-West"):
+        locObject = Location("Melbourne-South", 2513, access, "East")
+        time= calcTime(arr)
+        return [locObject, time]
+        
+    if (location == "Melbourne-West"):
         Aircraft = Vehicle("RAAF Fixed Wing", 600, 20, 2500)
         Heli = Vehicle("Taipan", 200, 10, 4);
         arr = np.array([Aircraft, Heli])
-        return calcTime(arr)   
-    
-    if (location.get_name() == "Geelong"):
+        locObject = Location("Melbourne-West", 2504, access, "East")
+        time= calcTime(arr)
+        return [locObject, time]
+        
+    if (location == "Geelong"):
         Aircraft = Vehicle("RAAF Fixed Wing", 600, 20, 2500)
         Heli = Vehicle("Taipan", 200, 10, 15);
         arr = np.array([Aircraft, Heli])
-        return calcTime(arr)   
-    
-    if (location.get_name() == "Ballarat"):
+        locObject = Location("Geelong", 2515, access, "East")
+        time= calcTime(arr)
+        return [locObject, time]
+        
+    if (location == "Ballarat"):
         Aircraft = Vehicle("RAAF Fixed Wing", 600, 20, 2500)
         Heli = Vehicle("Taipan", 200, 10, 28);
         arr = np.array([Aircraft, Heli])
-        return calcTime(arr)   
-    
-    if (location.get_name() == "Bendigo"):
+        locObject = Location("Ballarat", 2528, access, "East")
+        time= calcTime(arr)
+        return [locObject, time]
+        
+    if (location == "Bendigo"):
         Aircraft = Vehicle("RAAF Fixed Wing", 600, 20, 2350)
         FourxFour = Vehicle("4x4", 80, 10, 8);
         arr = np.array([Aircraft, FourxFour])
-        return calcTime(arr)   
-    
-    if (location.get_name() == "Mildura"):
+        locObject = Location("Bendigo", 2358, access, "East")
+        time= calcTime(arr)
+        return [locObject, time]
+        
+    if (location == "Mildura"):
         Aircraft = Vehicle("RAAF Fixed Wing", 600, 20, 2200)
         FourxFour = Vehicle("4x4", 80, 10, 10);
         arr = np.array([Aircraft, FourxFour])
-        return calcTime(arr)
-    
-    if (location.get_name() == "Shepparton"):
+        locObject = Location("Mildura", 2210, access, "East")
+        time= calcTime(arr)
+        return [locObject, time]
+        
+    if (location == "Shepparton"):
         Aircraft = Vehicle("RAAF Fixed Wing", 600, 20, 2300)
         FourxFour = Vehicle("4x4", 80, 10, 15);
         arr = np.array([Aircraft, FourxFour])
-        return calcTime(arr)
-    
-    if (location.get_name() == "Wondonga"):
+        locObject = Location("Shepparton", 2315, access, "East")
+        time= calcTime(arr)
+        return [locObject, time]
+        
+    if (location == "Wondonga"):
         Aircraft = Vehicle("RAAF Fixed Wing", 600, 20, 2300)
         FourxFour = Vehicle("4x4", 80, 10, 20);
         arr = np.array([Aircraft, FourxFour])
-        return calcTime(arr)
-    
-    if (location.get_name() == "Warrnambool"):
+        locObject = Location("Wondonga", 2320, access, "East")
+        time= calcTime(arr)
+        return [locObject, time]
+        
+    if (location == "Warrnambool"):
         Aircraft = Vehicle("RAAF Fixed Wing", 600, 20, 2600)
         FourxFour = Vehicle("4x4", 80, 10, 15);
         arr = np.array([Aircraft, FourxFour])
-        return calcTime(arr)
-    
-    if (location.get_name() == "Lakes Region VIC"):
+        locObject = Location("Warrnambool", 2615, access, "East")
+        time= calcTime(arr)
+        return [locObject, time]
+        
+    if (location == "Lakes Region VIC"):
         Aircraft = Vehicle("RAAF Fixed Wing", 600, 20, 2700)
         Heli = Vehicle("Taipan", 200, 10, 28);
         arr = np.array([Aircraft, Heli])
-        return calcTime(arr)
-    
-    if (location.get_name() == "North West Region VIC"):
+        locObject = Location("Lakes Region VIC", 2728, access, "East")
+        time= calcTime(arr)
+        return [locObject, time]
+        
+    if (location == "North West Region VIC"):
         Aircraft = Vehicle("RAAF Fixed Wing", 600, 20, 2350)
         FourxFour = Vehicle("4x4", 80, 10, 50);
         arr = np.array([Aircraft, FourxFour])
-        return calcTime(arr)
-    
-    if (location.get_name() == "Great Ocean Region VIC"):
+        locObject = Location("North West Region VIC", 2400, access, "East")
+        time= calcTime(arr)
+        return [locObject, time]
+        
+    if (location == "Great Ocean Region VIC"):
         Aircraft = Vehicle("RAAF Fixed Wing", 600, 20, 2350)
         FourxFour = Vehicle("4x4", 80, 10, 30);
         arr = np.array([Aircraft, FourxFour])
-        return calcTime(arr)
-    
-    if (location.get_name() == "Gippsland Region VIC"):
+        locObject = Location("Great Ocean Region VIC", 2380, access, "East")
+        time= calcTime(arr)
+        return [locObject, time]
+        
+    if (location == "Gippsland Region VIC"):
         Aircraft = Vehicle("RAAF Fixed Wing", 600, 20, 2700)
         Heli = Vehicle("Taipan", 200, 10, 8);
         arr = np.array([Aircraft, Heli])
-        return calcTime(arr)
-    
-    if (location.get_name() == "High Country Region VIC"):
+        locObject = Location("Gippsland Region VIC", 2708, access, "East")
+        time= calcTime(arr)
+        return [locObject, time]
+        
+    if (location == "High Country Region VIC"):
         Aircraft = Vehicle("RAAF Fixed Wing", 600, 20, 2700)
         Heli = Vehicle("Taipan", 200, 10, 22);
         arr = np.array([Aircraft, Heli])
-        return calcTime(arr)
-    
+        locObject = Location("High Country Region VIC", 2722, access, "East")
+        time= calcTime(arr)
+        return [locObject, time]
+        
     #TAS TAG E ////////////////////////////////////////////////////
-    if (location.get_name() == "Hobart"):
+    if (location == "Hobart"):
         Aircraft = Vehicle("RAAF Fixed Wing", 600, 20, 3200)
         FourxFour = Vehicle("4x4", 80, 10, 20);
         arr = np.array([Aircraft, FourxFour])
-        return calcTime(arr)
+        locObject = Location("Hobart", 3220, access, "East")
+        time= calcTime(arr)
+        return [locObject, time]
     
-    if (location.get_name() == "Launceston"):
+    if (location == "Launceston"):
         Aircraft = Vehicle("RAAF Fixed Wing", 600, 20, 3000)
         FourxFour = Vehicle("4x4", 80, 10, 15);
         arr = np.array([Aircraft, FourxFour])
-        return calcTime(arr)
+        locObject = Location("Launceston", 3015, access, "East")
+        time= calcTime(arr)
+        return [locObject, time]
     
-    if (location.get_name() == "North West Region TAS"):
+    if (location == "North West Region TAS"):
         Aircraft = Vehicle("RAAF Fixed Wing", 600, 20, 3000)
         FourxFour = Vehicle("4x4", 80, 10, 250);
         arr = np.array([Aircraft, FourxFour])
-        return calcTime(arr)
+        locObject = Location("North West Region TAS", 3250, access, "East")
+        time= calcTime(arr)
+        return [locObject, time]
     
-    if (location.get_name() == "North Region TAS"):
+    if (location == "North Region TAS"):
         Aircraft = Vehicle("RAAF Fixed Wing", 600, 20, 3000)
         FourxFour = Vehicle("4x4", 80, 10, 100);
         arr = np.array([Aircraft, FourxFour])
-        return calcTime(arr)
+        locObject = Location("North Region TAS", 3100, access, "East")
+        time= calcTime(arr)
+        return [locObject, time]
     
-    if (location.get_name() == "East Region TAS"):
+    if (location == "East Region TAS"):
         Aircraft = Vehicle("RAAF Fixed Wing", 600, 20, 3000)
         FourxFour = Vehicle("4x4", 80, 10, 150);
         arr = np.array([Aircraft, FourxFour])
-        return calcTime(arr)
+        locObject = Location("East Region TAS", 3150, access, "East")
+        time= calcTime(arr)
+        return [locObject, time]
     
-    if (location.get_name() == "South Region TAS"):
+    if (location == "South Region TAS"):
         Aircraft = Vehicle("RAAF Fixed Wing", 600, 20, 3200)
         FourxFour = Vehicle("4x4", 80, 10, 250);
         arr = np.array([Aircraft, FourxFour])
-        return calcTime(arr)
+        locObject = Location("South Region TAS", 3450, access, "East")
+        time= calcTime(arr)
+        return [locObject, time]
     
-    if (location.get_name() == "West Region TAS"):
+    if (location == "West Region TAS"):
         Aircraft = Vehicle("RAAF Fixed Wing", 600, 20, 3200)
         FourxFour = Vehicle("4x4", 80, 10, 300);
         arr = np.array([Aircraft, FourxFour])
-        return calcTime(arr)
+        locObject = Location("West Region TAS", 3500, access, "East")
+        time= calcTime(arr)
+        return [locObject, time]
     
     #SA TAG E/W ////////////////////////////////////////////////////////////
-    if (location.get_name() == "Adelaide-North"):
+    if (location == "Adelaide-North"):
         Aircraft = Vehicle("RAAF Fixed Wing", 600, 20, 2400)
         Heli = Vehicle("Taipan", 200, 10, 7);
         arr = np.array([Aircraft, Heli])
-        return calcTime(arr)
-    
-    if (location.get_name() == "Adelaide-East"):
+        locObject = Location("Adelaide-North", 2407, access, "East")
+        time= calcTime(arr)
+        return [locObject, time]
+        
+    if (location == "Adelaide-East"):
         Aircraft = Vehicle("RAAF Fixed Wing", 600, 20, 2400)
         Heli = Vehicle("Taipan", 200, 10, 4);
         arr = np.array([Aircraft, Heli])
-        return calcTime(arr)
-    
-    if (location.get_name() == "Adelaide-South"):
+        locObject = Location("Adelaide-East", 2404, access, "East")
+        time= calcTime(arr)
+        return [locObject, time]
+            
+    if (location == "Adelaide-South"):
         Aircraft = Vehicle("RAAF Fixed Wing", 600, 20, 2400)
         Heli = Vehicle("Taipan", 200, 10, 7);
         arr = np.array([Aircraft, Heli])
-        return calcTime(arr)
-    
-    if (location.get_name() == "Adelaide-West"):
+        locObject = Location("Adelaide-South", 2407, access, "East")
+        time= calcTime(arr)
+        return [locObject, time]
+            
+    if (location == "Adelaide-West"):
         Aircraft = Vehicle("RAAF Fixed Wing", 600, 20, 2400)
         Heli = Vehicle("Taipan", 200, 10, 3);
         arr = np.array([Aircraft, Heli])
-        return calcTime(arr)
-    
-    if (location.get_name() == "Mount Gambier"):
+        locObject = Location("Adelaide-West", 2403, access, "East")
+        time= calcTime(arr)
+        return [locObject, time]
+            
+    if (location == "Mount Gambier"):
         Aircraft = Vehicle("RAAF Fixed Wing", 600, 20, 2700)
         Heli = Vehicle("Taipan", 200, 10, 10);
         arr = np.array([Aircraft, Heli])
-        return calcTime(arr)
-    
-    if (location.get_name() == "Whyalla"):
+        locObject = Location("Mount Gambier", 2710, access, "East")
+        time= calcTime(arr)
+        return [locObject, time]
+            
+    if (location == "Whyalla"):
         Aircraft = Vehicle("RAAF Fixed Wing", 600, 20, 2400)
         Heli = Vehicle("Taipan", 200, 10, 32);
         arr = np.array([Aircraft, Heli])
-        return calcTime(arr)
-    
+        locObject = Location("Whyalla", 2432, access, "East")
+        time= calcTime(arr)
+        return [locObject, time]
+            
     #TAG W [ONLY]
-    if (location.get_name() == "Coober Pedy"):
+    if (location == "Coober Pedy"):
         Aircraft = Vehicle("RAAF Fixed Wing", 600, 20, 2500)
         FourxFour = Vehicle("4x4", 80, 10, 8);
         arr = np.array([Aircraft, FourxFour])
-        return calcTime(arr)  
-    
-    if (location.get_name() == "North East Region SA"):
+        locObject = Location("Coober Pedy", 2508, access, "West")
+        time= calcTime(arr)
+        return [locObject, time]
+            
+    if (location == "North East Region SA"):
         Aircraft = Vehicle("RAAF Fixed Wing", 600, 20, 2400)
         Heli = Vehicle("Taipan", 200, 10, 200);
         arr = np.array([Aircraft, Heli])
-        return calcTime(arr) 
-    
-    if (location.get_name() == "South East Region SA"):
+        locObject = Location("North East Region SA", 2600, access, "East")
+        time= calcTime(arr)
+        return [locObject, time]
+            
+    if (location == "South East Region SA"):
         Aircraft = Vehicle("RAAF Fixed Wing", 600, 20, 2400)
         Heli = Vehicle("Taipan", 200, 10, 100);
         arr = np.array([Aircraft, Heli])
-        return calcTime(arr) 
-    
-    if (location.get_name() == "South West Region SA"):
+        locObject = Location("South East Region SA", 2500, access, "East")
+        time= calcTime(arr)
+        return [locObject, time]
+            
+    if (location == "South West Region SA"):
         Aircraft = Vehicle("RAAF Fixed Wing", 600, 20, 2400)
         Heli = Vehicle("Taipan", 200, 10, 180);
         arr = np.array([Aircraft, Heli])
-        return calcTime(arr) 
-    
+        locObject = Location("South West Region SA", 2580, access, "East")
+        time= calcTime(arr)
+        return [locObject, time]
+            
     #TAG W [ONLY]
-    if (location.get_name() == "North West Region SA"):
+    if (location == "North West Region SA"):
         Aircraft = Vehicle("RAAF Fixed Wing", 600, 20, 2500)
         FourxFour = Vehicle("4x4", 80, 10, 250);
         arr = np.array([Aircraft, FourxFour])
-        return calcTime(arr) 
-    
+        locObject = Location("North West Region SA", 2750, access, "West")
+        time= calcTime(arr)
+        return [locObject, time]
+        
     #NT TAG E/W ///////////////////////////////////////////////////////////
-    if (location.get_name() == "Darwin-North"):
+    if (location == "Darwin-North"):
         Aircraft = Vehicle("RAAF Fixed Wing", 600, 20, 2500)
         Heli = Vehicle("Taipan", 200, 10, 3);
         arr = np.array([Aircraft, Heli])
-        return calcTime(arr) 
-    
-    if (location.get_name() == "Darwin-East"):
+        locObject = Location("Darwin-North", 2503, access, "East")
+        time= calcTime(arr)
+        return [locObject, time]
+             
+    if (location == "Darwin-East"):
         Aircraft = Vehicle("RAAF Fixed Wing", 600, 20, 2500)
         Heli = Vehicle("Taipan", 200, 10, 4);
         arr = np.array([Aircraft, Heli])
-        return calcTime(arr) 
-    
-    if (location.get_name() == "Darwin-South"):
+        locObject = Location("Darwin-East", 2504, access, "East")
+        time= calcTime(arr)
+        return [locObject, time]
+             
+    if (location == "Darwin-South"):
         Aircraft = Vehicle("RAAF Fixed Wing", 600, 20, 2500)
         Heli = Vehicle("Taipan", 200, 10, 6);
         arr = np.array([Aircraft, Heli])
-        return calcTime(arr) 
-    
-    if (location.get_name() == "Darwin-West"):
+        locObject = Location("Darwin-South", 2506, access, "East")
+        time= calcTime(arr)
+        return [locObject, time]
+             
+    if (location== "Darwin-West"):
         Aircraft = Vehicle("RAAF Fixed Wing", 600, 20, 2500)
         Heli = Vehicle("Taipan", 200, 10, 2);
         arr = np.array([Aircraft, Heli])
-        return calcTime(arr) 
-    
-    if (location.get_name() == "Katherine"):
+        locObject = Location("Darwin-West", 2502, access, "East")
+        time= calcTime(arr)
+        return [locObject, time]
+             
+    if (location == "Katherine"):
         Aircraft = Vehicle("RAAF Fixed Wing", 600, 20, 2200)
         Heli = Vehicle("Taipan", 200, 10, 8);
         arr = np.array([Aircraft, Heli])
-        return calcTime(arr) 
-    
-    if (location.get_name() == "Alice Springs"):
+        locObject = Location("Katherine", 2208, access, "East")
+        time= calcTime(arr)
+        return [locObject, time]
+             
+    if (location == "Alice Springs"):
         Aircraft = Vehicle("RAAF Fixed Wing", 600, 20, 2070)
         FourxFour = Vehicle("4x4", 80, 10, 25);
         arr = np.array([Aircraft, FourxFour])
-        return calcTime(arr) 
-    
+        locObject = Location("Alice Springs", 2095, access, "East")
+        time= calcTime(arr)
+        return [locObject, time]
+             
     #TAG W [ONLY]
-    if (location.get_name() == "Yulara"):
+    if (location == "Yulara"):
         Aircraft = Vehicle("RAAF Fixed Wing", 600, 20, 2050)
         FourxFour = Vehicle("4x4", 80, 10, 10);
         arr = np.array([Aircraft, FourxFour])
-        return calcTime(arr) 
-    
-    if (location.get_name() == "South East Region NT"):
+        locObject = Location("Yulara", 2060, access, "West")
+        time= calcTime(arr)
+        return [locObject, time]
+             
+    if (location == "South East Region NT"):
         Aircraft = Vehicle("RAAF Fixed Wing", 600, 20, 2070)
         FourxFour = Vehicle("4x4", 80, 10, 300);
         arr = np.array([Aircraft, FourxFour])
-        return calcTime(arr)
-    
-    if (location.get_name() == "North East Region NT"):
+        locObject = Location("South East Region NT", 2370, access, "East")
+        time= calcTime(arr)
+        return [locObject, time]
+             
+    if (location == "North East Region NT"):
         Aircraft = Vehicle("RAAF Fixed Wing", 600, 20, 2200)
         Heli = Vehicle("Taipan", 200, 10, 150);
         arr = np.array([Aircraft, Heli])
-        return calcTime(arr)
-    
-    if (location.get_name() == "Central Region NT"):
+        locObject = Location("North East Region NT", 2350, access, "East")
+        time= calcTime(arr)
+        return [locObject, time]
+             
+    if (location == "Central Region NT"):
         Aircraft = Vehicle("RAAF Fixed Wing", 600, 20, 2200)
         Heli = Vehicle("Taipan", 200, 10, 120);
         arr = np.array([Aircraft, Heli])
-        return calcTime(arr)
-    
-    if (location.get_name() == "South West Region NT"):
+        locObject = Location("Central Region NT", 2320, access, "East")
+        time= calcTime(arr)
+        return [locObject, time]
+             
+    if (location == "South West Region NT"):
         Aircraft = Vehicle("RAAF Fixed Wing", 600, 20, 2200)
         Heli = Vehicle("Taipan", 200, 10, 200);
         arr = np.array([Aircraft, Heli])
-        return calcTime(arr)
-    
+        locObject = Location("South West Region NT", 2400, access, "East")
+        time= calcTime(arr)
+        return [locObject, time]
+             
     #WA - TAG W /////////////////////////////////////////////////////
-    if (location.get_name() == "Perth-North"):
+    if (location == "Perth-North"):
         Heli = Vehicle("Taipan", 200, 10, 10);
         arr = np.array([Heli])
-        return calcTime(arr) 
-
-    if (location.get_name() == "Perth-East"):
+        locObject = Location("Perth-North", 10, access, "West")
+        time= calcTime(arr)
+        return [locObject, time]
+         
+    if (location == "Perth-East"):
         Heli = Vehicle("Taipan", 200, 10, 12);
         arr = np.array([Heli])
-        return calcTime(arr) 
-
-    if (location.get_name() == "Perth-South"):
+        locObject = Location("Perth-East", 12, access, "West")
+        time= calcTime(arr)
+        return [locObject, time]
+         
+    if (location == "Perth-South"):
         Heli = Vehicle("Taipan", 200, 10, 8);
         arr = np.array([Heli])
-        return calcTime(arr) 
-    
-    if (location.get_name() == "Perth-West"):
+        locObject = Location("Perth-South", 8, access, "West")
+        time= calcTime(arr)
+        return [locObject, time]
+             
+    if (location == "Perth-West"):
         Heli = Vehicle("Taipan", 200, 10, 4);
         arr = np.array([Heli])
-        return calcTime(arr) 
-    
-    if (location.get_name() == "Learmonth"):
+        locObject = Location("Perth-West", 4, access, "West")
+        time= calcTime(arr)
+        return [locObject, time]
+             
+    if (location == "Learmonth"):
         Aircraft = Vehicle("RAAF Fixed Wing", 600, 20, 1200)
         Heli = Vehicle("Taipan", 200, 10, 3);
         arr = np.array([Aircraft, Heli])
-        return calcTime(arr)
-    
-    if (location.get_name() == "Broome"):
+        locObject = Location("Learmonth", 1203, access, "West")
+        time= calcTime(arr)
+        return [locObject, time]
+             
+    if (location == "Broome"):
         Aircraft = Vehicle("RAAF Fixed Wing", 600, 20, 2050)
         Heli = Vehicle("Taipan", 200, 10, 180);
         arr = np.array([Aircraft, Heli])
-        return calcTime(arr)
-    
-    if (location.get_name() == "Exmouth"):
+        locObject = Location("Broome", 2230, access, "West")
+        time= calcTime(arr)
+        return [locObject, time]
+             
+    if (location == "Exmouth"):
         Aircraft = Vehicle("RAAF Fixed Wing", 600, 20, 1200)
         Heli = Vehicle("Taipan", 200, 10, 30);
         arr = np.array([Aircraft, Heli])
-        return calcTime(arr)
-    
-    if (location.get_name() == "Karratha"):
+        locObject = Location("Exmouth", 1230, access, "West")
+        time= calcTime(arr)
+        return [locObject, time]
+             
+    if (location == "Karratha"):
         Aircraft = Vehicle("RAAF Fixed Wing", 600, 20, 1500)
         Heli = Vehicle("Taipan", 200, 10, 18);
         arr = np.array([Aircraft, Heli])
-        return calcTime(arr)
-    
-    if (location.get_name() == "Albany"):
+        locObject = Location("Karratha", 1518, access, "West")
+        time= calcTime(arr)
+        return [locObject, time]
+             
+    if (location == "Albany"):
         Heli = Vehicle("Taipan", 200, 10, 400);
         arr = np.array([Heli])
-        return calcTime(arr)
-    
-    if (location.get_name() == "Geraldton"):
+        locObject = Location("Albany", 400, access, "West")
+        time= calcTime(arr)
+        return [locObject, time]
+             
+    if (location == "Geraldton"):
         Heli = Vehicle("Taipan", 200, 10, 420);
         arr = np.array([Heli])
-        return calcTime(arr)
-    
-    if (location.get_name() == "Port Hedland"):
+        locObject = Location("Geraldton", 420, access, "West")
+        time= calcTime(arr)
+        return [locObject, time]
+             
+    if (location == "Port Hedland"):
         Aircraft = Vehicle("RAAF Fixed Wing", 600, 20, 1200)
         Heli = Vehicle("Taipan", 200, 10, 600);
         arr = np.array([Aircraft, Heli])
-        return calcTime(arr)
-    
-    if (location.get_name() == "Kununurra"):
+        locObject = Location("Port Hedland", 1800, access, "West")
+        time= calcTime(arr)
+        return [locObject, time]
+             
+    if (location == "Kununurra"):
         Aircraft = Vehicle("RAAF Fixed Wing", 600, 20, 2200)
         Heli = Vehicle("Taipan", 200, 10, 300);
         arr = np.array([Aircraft, Heli])
-        return calcTime(arr)
-    
-    if (location.get_name() == "Kimberley Region WA"):
+        locObject = Location("Kununurra", 2500, access, "West")
+        time= calcTime(arr)
+        return [locObject, time]
+             
+    if (location == "Kimberley Region WA"):
         Aircraft = Vehicle("RAAF Fixed Wing", 600, 20, 2200)
         Heli = Vehicle("Taipan", 200, 10, 250);
         arr = np.array([Aircraft, Heli])
-        return calcTime(arr)
-    
-    if (location.get_name() == "Pilbara Region WA"):
+        locObject = Location("Kimberley Region WA", 2450, access, "West")
+        time= calcTime(arr)
+        return [locObject, time]
+             
+    if (location == "Pilbara Region WA"):
         Aircraft = Vehicle("RAAF Fixed Wing", 600, 20, 1200)
         Heli = Vehicle("Taipan", 200, 10, 400);
         arr = np.array([Aircraft, Heli])
-        return calcTime(arr)
-    
-    if (location.get_name() == "Mid West Region WA"):
+        locObject = Location("Pilbara Region WA", 1600, access, "West")
+        time= calcTime(arr)
+        return [locObject, time]
+             
+    if (location == "Mid West Region WA"):
         Aircraft = Vehicle("RAAF Fixed Wing", 600, 20, 1200)
         Heli = Vehicle("Taipan", 200, 10, 300);
         arr = np.array([Aircraft, Heli])
-        return calcTime(arr)
-    
-    if (location.get_name() == "Goldfields Esperance Region WA"):
+        locObject = Location("Mid West Region WA", 1500, access, "West")
+        time= calcTime(arr)
+        return [locObject, time]
+             
+    if (location == "Goldfields Esperance Region WA"):
         Heli = Vehicle("Taipan", 200, 10, 450);
         arr = np.array([Heli])
-        return calcTime(arr) 
-    
-    if (location.get_name() == "South West Region WA"):
+        locObject = Location("Goldfields Esperance Region WA", 450, access, "West")
+        time= calcTime(arr)
+        return [locObject, time]
+             
+    if (location == "South West Region WA"):
         Heli = Vehicle("Taipan", 200, 10, 100);
         arr = np.array([Heli])
-        return calcTime(arr) 
-
+        locObject = Location("South West Region WA", 100, access, "West")
+        time= calcTime(arr)
+        return [locObject, time]
+         
 
 def calcTime(arr):
     time = 0
@@ -592,10 +780,15 @@ def calcTime(arr):
     #Return Time
     return str(math.ceil(time))
 
+def printETA(loc, access):
+    res = selectVehicle(loc, access)
+    print("Location: " + res[0].get_name() + " ETA: " + str(res[1]))
+    print("Team Responding will be ADF Special Forces TAG-" + res[0].get_tag())
 
 def displayLocAc(location, access):
     print("Area: " + location)
     print("Access: " + access)
+    printETA(location, access)
     
 def inter2(location, access, root2):
     time.sleep(1)
@@ -606,7 +799,7 @@ def createLocation():
     print("State Selected is: " + state.get())
     specificState = state.get()
     locList = []
-    NSW = ["Sydney-North", "Sydney-East", "Sydney-South", "Sydney-West", "Newcastle", "Mid North Coast", "Central Coast Coast", "Hunter Valley", "Illawarra", "Canberra", "Wagga Wagga", "Northern Rivers", "North West Region NSW", "Central Region NSW", "Outback Region NSW"]
+    NSW = ["Sydney-North", "Sydney-East", "Sydney-South", "Sydney-West", "Newcastle", "Mid North Coast", "Central Coast", "Hunter Valley", "Illawarra", "Canberra", "Wagga Wagga", "Northern Rivers", "North West Region NSW", "Central Region NSW", "Outback Region NSW"]
     QLD = ["Brisbane-North", "Brisbane-East", "Brisbane-South", "Brisbane-West", "Gold Coast", "Sunshine Coast", "Cairns", "Townsville",  "Toowoomba", "Hervey Bay", "Mackay", "Rockhampton", "Bundaberg", "South West Region QLD", "Central West Region QLD", "North West Region QLD", "Far North Region QLD"]
     VIC = ["Melbourne-North", "Melbourne-East", "Melbourne-South", "Melbourne-West", "Geelong", "Ballarat", "Bendigo", "Mildura", "Shepparton", "Wondonga", "Warrnambool", "Lakes Region VIC", "North West Region VIC", "Great Ocean Region VIC", "Gippsland Region VIC", "High Country Region VIC" ]
     TAS = ["Hobart", "Launceston", "North West Region TAS", "North Region TAS", "East Region TAS", "South Region TAS", "West Region TAS" ]
@@ -693,13 +886,13 @@ def mainScreen():
     root.mainloop()    
 
 def main():
-    location = Location("South West Region WA", 1860, "Medium", None)
-    time1 = selectVehicle(location);
-    print("TAG-East ETA: " + time1 + " minutes to location: " + location.get_name())
+    # location = Location("South West Region WA", 1860, "Medium", None)
+    # time1 = selectVehicle(location);
+    # print("TAG-East ETA: " + time1 + " minutes to location: " + location.get_name())
     
-    location2 = Location("Goldfields Esperance Region WA", 1670, "Medium", None)
-    time2 = selectVehicle(location2);
-    print("TAG-East ETA: " + time2 + " minutes to location: " + location2.get_name())
+    # location2 = Location("Goldfields Esperance Region WA", 1670, "Medium", None)
+    # time2 = selectVehicle(location2);
+    # print("TAG-East ETA: " + time2 + " minutes to location: " + location2.get_name())
 
     mainScreen()
     
