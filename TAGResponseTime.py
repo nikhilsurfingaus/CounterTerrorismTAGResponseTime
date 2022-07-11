@@ -799,9 +799,12 @@ def printETA(loc, access):
         
     nameStr = ', '.join([str(n) for n in names])
         
+    accessTime = accessFactor(access)
+    finalTime = int(res[1]) + accessTime
+        
     vInvol = "Vehicles Involved include: " + nameStr
     loc = "Location: " + res[0].get_name()
-    arr = "TAG team will arrive within: " + str(res[1]) + " mins"
+    arr = "TAG team will arrive within: " + str(finalTime) + " mins"
     team = "Team Responding will be ADF Special Forces TAG-" + res[0].get_tag()
     dis = "TAG Base Distance To Your Area Approx: " + str(res[0].get_baseDistance()) + " kms"
     
@@ -832,7 +835,13 @@ def printETA(loc, access):
     root3.mainloop()
     
     
-    
+def accessFactor(accesssability):
+    if (accesssability == "Simple"):
+        return 5
+    if (accesssability == "Standard"):
+        return 10
+    if (accesssability == "Complex"):
+        return 15
 
 def displayLocAc(location, access):
     printETA(location, access)
@@ -932,14 +941,6 @@ def mainScreen():
     root.mainloop()    
 
 def main():
-    # location = Location("South West Region WA", 1860, "Medium", None)
-    # time1 = selectVehicle(location);
-    # print("TAG-East ETA: " + time1 + " minutes to location: " + location.get_name())
-    
-    # location2 = Location("Goldfields Esperance Region WA", 1670, "Medium", None)
-    # time2 = selectVehicle(location2);
-    # print("TAG-East ETA: " + time2 + " minutes to location: " + location2.get_name())
-
     mainScreen()
     
 if __name__ == "__main__":
