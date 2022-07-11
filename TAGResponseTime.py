@@ -1,11 +1,13 @@
 from turtle import width
-from Resoruces.Vehicle import Vehicle
-from Resoruces.Location import Location
+from Resources.Vehicle import Vehicle
+from Resources.Location import Location
 import numpy as np
 import math
 from tkinter import*
 import time
 from tkinter import messagebox
+from tkinter import PhotoImage
+from PIL import Image, ImageTk
 
 
 #Creat Tkinter UI Interface
@@ -16,6 +18,10 @@ test2 = False
 var = IntVar()
 
 
+
+
+ 
+ 
 def selectVehicle(location, access):
     time = 0;
     #NSW Regions TAG E //////////////////////////////////////////////////////
@@ -790,6 +796,7 @@ def confirmQuit(root3):
     
 
 def printETA(loc, access):
+    
     res = selectVehicle(loc, access)
     vehicles = res[2]
     names = np.array([])    
@@ -803,32 +810,38 @@ def printETA(loc, access):
     finalTime = int(res[1]) + accessTime
         
     vInvol = "Vehicles Involved include: " + nameStr
-    loc = "Location: " + res[0].get_name()
-    arr = "TAG team will arrive within: " + str(finalTime) + " mins"
+    loc = "Location: " + res[0].get_name() + " (" + access + ")"
+    arr = "TAG-" + res[0].get_tag() + " team will arrive within: " + str(finalTime) + " mins"
     team = "Team Responding will be ADF Special Forces TAG-" + res[0].get_tag()
     dis = "TAG Base Distance To Your Area Approx: " + str(res[0].get_baseDistance()) + " kms"
     
     root3 = Tk()
     root3.geometry('500x400')
     root3.title("TAG Response Estimator")
-    
-    label_0 = Label(root3, text="Result",width=28,font="Helvetica 25 bold")
-    label_0.place(x=-25,y=23)
+    root3.iconbitmap("Resources/Logo.ico") 
+
+    #Page 3 Image
+    img3 = Image.open("Resources/SASR3.png")
+    img3 = img3.resize((120, 100))
+    pageThree = ImageTk.PhotoImage(img3)
+
+    label_0 = Label(root3, image=pageThree ,text="Result", compound=LEFT,width=300,font="Helvetica 25 bold")
+    label_0.place(x=-38,y=5)
     
     label_1 = Label(root3, text=vInvol,width=60, anchor="w",font="Helvetica 10 bold")
-    label_1.place(x=20,y=100)
+    label_1.place(x=20,y=115)
 
     label_2 = Label(root3, text=loc,width=60, anchor="w",font="Helvetica 10 bold")
-    label_2.place(x=20,y=140)
+    label_2.place(x=20,y=150)
 
     label_4 = Label(root3, text=dis,width=60, anchor="w", justify=LEFT,font="Helvetica 10 bold")
-    label_4.place(x=20,y=180)
+    label_4.place(x=20,y=185)
     
     label_4 = Label(root3, text=team,width=60, anchor="w",font="Helvetica 10 bold")
     label_4.place(x=20,y=220)
     
     label_4 = Label(root3, text=arr,width=60, anchor="w",font="Helvetica 16 bold")
-    label_4.place(x=20,y=280)
+    label_4.place(x=20,y=265)
     
     Button(root3, text='Quit',width=20,bg='brown',fg='white', command=lambda : confirmQuit(root3)).place(x=160,y=340)
 
@@ -879,17 +892,21 @@ def createLocation():
     if (specificState == "WA"):
         locList = WA
     
-    
-    
-    
     root2 = Tk()
     root2.geometry('500x400')
     root2.title("TAG Response Estimator")
+    root2.iconbitmap("Resources/Logo.ico") 
+
+    
+    #Page 2 Image
+    img2 = Image.open("Resources/SASR2.png")
+    img2 = img2.resize((120, 100))
+    pageTwo = ImageTk.PhotoImage(img2)
+
     
 
-
-    label_0 = Label(root2, text="Select Location",width=28,font=("bold", 20))
-    label_0.place(x=20,y=53)
+    label_0 = Label(root2, image=pageTwo, text="Select Location",compound=TOP ,width=300,font=("bold", 20))
+    label_0.place(x=88,y=10)
     
     area = StringVar(root2)
     access = StringVar(root2)
@@ -898,20 +915,20 @@ def createLocation():
     access.set(accessList[0])
     
     selectedLocation = OptionMenu(root2, area, *locList)
-    selectedLocation.config(width=20)
+    selectedLocation.config(width=30)
     selectedLocation.pack()
-    selectedLocation.place(x=160,y=123)
+    selectedLocation.place(x=130,y=160)
     
 
     label_1 = Label(root2, text="Select Accessibility",width=28,font=("bold", 20))
-    label_1.place(x=20,y=200)
+    label_1.place(x=20,y=210)
     
     selectedAccess = OptionMenu(root2, access, *accessList)
     selectedAccess.config(width=20)
     selectedAccess.pack()
-    selectedAccess.place(x=160,y=270)
+    selectedAccess.place(x=160,y=260)
     
-    Button(root2, text='Next',width=20,bg='brown',fg='white', command=lambda : inter2(area.get(), access.get(), root2)).place(x=160,y=320)
+    Button(root2, text='Next',width=20,bg='brown',fg='white', command=lambda : inter2(area.get(), access.get(), root2)).place(x=160,y=330)
 
     root2.mainloop()
     
@@ -925,18 +942,23 @@ def mainScreen():
     STATES = ["NSW", "QLD", "VIC", "TAS", "SA", "NT", "WA"]
     root.geometry('500x400')
     root.title("TAG Response Estimator")
-    label_0 = Label(root, text="Select State/Territory",width=28,font=("bold", 20))
-    label_0.place(x=20,y=53)
+    root.iconbitmap("Resources/Logo.ico") 
+    
+    #Load Image Logo Page 1
+    img = Image.open("Resources/SASR.png")
+    img = img.resize((120, 100))
+    homeImg = ImageTk.PhotoImage(img)
+    
+    label_0 = Label(root, image=homeImg, text="Select State/Territory",compound=TOP ,width=300,font=("bold", 20))
+    label_0.place(x=88,y=20)
 
     state.set(STATES[0]) # default value
 
     w = OptionMenu(root, state, *STATES)
     w.pack()
-    w.place(x=200,y=143)
+    w.place(x=200,y=200)
     
     Button(root, text='Next',width=20,bg='brown',fg='white', command=inter).place(x=160,y=280)
-
-    
 
     root.mainloop()    
 
