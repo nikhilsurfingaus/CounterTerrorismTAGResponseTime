@@ -18,10 +18,19 @@ test2 = False
 var = IntVar()
 
 
+''' 
+This determines the time taken for TAG E/W to reach location selected
+by the user. As well as bundling the result into a list of the location
+object and vehicles involved objects.
 
-
- 
- 
+Parameters:
+    location: Name of location for TAG deployment
+    access: Accessability of diffculty to reach location
+Returns: 
+    locObject: Location object created from input of selected location
+    time: Time for TAG to reach location without access consideration 
+    arr: List of vehicles objects involved to reach location
+'''
 def selectVehicle(location, access):
     time = 0;
     #NSW Regions TAG E //////////////////////////////////////////////////////
@@ -763,7 +772,15 @@ def selectVehicle(location, access):
         time= calcTime(arr)
         return [locObject, time, arr]
          
+''' 
+This determines the time taken for TAG E/W to reach location selected
+by the user, using distance-speed formula. Converted to minutes
 
+Parameters:
+    arr: List of vehicles objects involved to reach location
+Returns: 
+    Time taken for TAG team to reach location without access factor
+'''
 def calcTime(arr):
     time = 0
     #Calculate Time
@@ -773,7 +790,14 @@ def calcTime(arr):
     #Return Time
     return str(math.ceil(time))
 
+''' 
+This confirms wether the user wishes to quit the program
 
+Parameters:
+    root3: Third form page of program
+Returns: 
+    N/A
+'''
 def confirmQuit(root3):
     response=messagebox.askyesno('TAG Response Estimator','Are you sure you want to exit?')
     if response:
@@ -781,6 +805,18 @@ def confirmQuit(root3):
         root3.destroy()    
     
 
+''' 
+This outputs to the form the final information for the 
+SASR TAG team to reach the location. This includes which
+TAG group East/West, distance to travel, vehicles involved, 
+location, access complexity and time to arrival.
+
+Parameters:
+    loc: Name of location for TAG deployment
+    access: Accessability of diffculty to reach location
+Returns: 
+    N/A
+'''
 def printETA(loc, access):
     
     res = selectVehicle(loc, access)
@@ -840,7 +876,15 @@ def printETA(loc, access):
 
     root3.mainloop()
     
-    
+''' 
+This returns the time to be added when condsidering
+accessability criteria for a location
+
+Parameters:
+    accessability: Accessability of diffculty to reach location
+Returns: 
+    Access additional time to be added
+'''
 def accessFactor(accesssability):
     if (accesssability == "Simple"):
         return 5
@@ -849,14 +893,44 @@ def accessFactor(accesssability):
     if (accesssability == "Complex"):
         return 15
 
+''' 
+This passes variables acquired from the form to be 
+input into system to determine final result
+
+Parameters:
+    location: Name of location for TAG deployment
+    access: Accessability of diffculty to reach location
+Returns: 
+    N/A
+'''
 def displayLocAc(location, access):
     printETA(location, access)
     
+''' 
+This closes the second form page and opens the 
+next page in program
+
+Parameters:
+    location: Name of location for TAG deployment
+    access: Accessability of diffculty to reach location
+    root2: Second page in form program
+Returns: 
+    N/A
+'''
 def inter2(location, access, root2):
     time.sleep(1)
     root2.destroy()
     displayLocAc(location, access)
 
+''' 
+This gets users to input a selected location and access
+based on their Australian State/Territory option
+
+Parameters:
+    N/A
+Returns: 
+    N/A
+'''
 def createLocation():
     specificState = state.get()
     locList = []
@@ -927,12 +1001,30 @@ def createLocation():
 
     root2.mainloop()
     
+''' 
+This closes the first form page and opens the 
+next page in program
+
+Parameters:
+    N/A
+Returns: 
+    N/A
+'''
 def inter():
     #Create UI delay for better UX
     time.sleep(1)
     root.destroy()
     createLocation()
-    
+
+''' 
+This gets users to input a selected State/Territory
+to next determine locations within that State/Territory
+
+Parameters:
+    N/A
+Returns: 
+    N/A
+'''
 def mainScreen():
     STATES = ["NSW", "QLD", "VIC", "TAS", "SA", "NT", "WA"]
     root.geometry('500x400')
@@ -959,6 +1051,9 @@ def mainScreen():
 
     root.mainloop()    
 
+''' 
+Master method to execute Pyhton script
+'''
 def main():
     mainScreen()
     
