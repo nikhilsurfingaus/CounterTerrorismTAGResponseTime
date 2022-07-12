@@ -29,7 +29,6 @@ in the Perth suburb of Swanbourne.
 ### Video
 
 # Process
-## Time
 Time is determined using a number of factor:
 - The distance from the closest TAG base either East (Sydney/Townsville) or West (Perth) to location
 - The distance and speed covered by Vehicle(s)
