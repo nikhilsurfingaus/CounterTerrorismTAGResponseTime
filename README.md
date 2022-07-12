@@ -15,7 +15,14 @@ Townsville Lavarack Barracks and Sydneys suburb of Holsworthy Barracks. Meanwhil
 in the Perth suburb of Swanbourne.
 
 # Usage
-## Installation
+## Python Requirments & Libraries 
+
+``` Python 3 ```
+``` Numpy ```
+``` Math ```
+``` Time ```
+``` Tkinter ```
+``` PIL ``` 
 
 ## Demo
 
