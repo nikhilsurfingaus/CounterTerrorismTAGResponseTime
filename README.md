@@ -25,11 +25,23 @@ in the Perth suburb of Swanbourne.
 ``` PIL ``` 
 
 ## Demo
-
 ### Picture-By-Picture
 ### Video
 
 # Process
+## Time
+Time is determined using a number of factor:
+- The distance from the closest TAG base either East (Sydney/Townsville) or West (Perth) to location
+- The distance and speed covered by Vehicle(s)
+  - 4x4
+  - Taipan Helicopter
+  - Fixed Wing RAAF Aircraft
+- Margin of error time by mode of Vehicle(s)
+- Accessability of final loction, ie terrain, buildings, weather etc
+  - Simple
+  - Standard
+  - Complex
+- Output information of within how many minutes TAG East/West will arrive
 
 # Disclaimer
 *This is not an official product nor is  it endorsed by the Special Air Service Regiment (SASR) and Australian Defence Force (ADF)*
