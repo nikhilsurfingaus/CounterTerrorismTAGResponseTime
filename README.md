@@ -14,7 +14,7 @@ The TAG unit is divided into TAG-East and TAG-West, seperating Australias two ma
 Townsville Lavarack Barracks and Sydneys suburb of Holsworthy Barracks. Meanwhile TAG-West is located at the Campbell Barracks 
 in the Perth suburb of Swanbourne.
 
-# Usage
+# User Usage
 ## Python Requirments & Libraries 
 
 ``` Python 3 ```
