@@ -32,7 +32,7 @@ Step 1                     |  Step 2                   | Step 3
 
 ### Video
 ## [Link To Youtube Demo Video](https://youtu.be/0pkNlw2e1UM)
-[![Everything Is AWESOME](https://yt-embed.herokuapp.com/embed?v=0pkNlw2e1UM)](https://youtu.be/0pkNlw2e1UM "Australia Tactical Assault Group (SASR TAG) Response Time Python Program
+[![TAG](https://yt-embed.live/embed?v=0pkNlw2e1UM)](https://youtu.be/0pkNlw2e1UM "Australia Tactical Assault Group (SASR TAG) Response Time Python Program
 ")
 
 # Process
