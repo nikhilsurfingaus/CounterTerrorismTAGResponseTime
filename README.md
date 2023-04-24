@@ -1,4 +1,4 @@
-# CounterTerrorismTAGResponseTime (Python GUI)
+# CounterTerrorismTAGResponseTime (Python GUI App)
 
 <img src="https://github.com/nikhilsurfingaus/CounterTerrorismTAGResponseTime/blob/master/Resources/SASR.png" width="200"> 
 
